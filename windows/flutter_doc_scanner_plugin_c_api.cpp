@@ -52,7 +52,9 @@ class FlutterDocScannerPluginCApi : public flutter::Plugin {
 
 }  // namespace
 
-void FlutterDocScannerPluginCApiRegisterWithRegistrar(
+
+
+void FlutterDocScannerPluginRegisterWithRegistrar(
     FlutterDesktopPluginRegistrarRef registrar) {
   flutter_doc_scanner::FlutterDocScannerPlugin::RegisterWithRegistrar(
       flutter::PluginRegistrarManager::GetInstance()
