@@ -22,6 +22,8 @@ list(APPEND PLUGIN_SOURCES
   "flutter_doc_scanner_plugin.h"
   "flutter_doc_scanner_plugin_c_api.cpp"  # Add this explicitly
 )
+# Disable treating warnings as errors
+target_compile_options(${PLUGIN_NAME} PRIVATE /WX-)
 
 
 # Alias the correct header file as the default plugin header file
