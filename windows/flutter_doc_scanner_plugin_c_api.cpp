@@ -12,14 +12,14 @@
 // Namespace to encapsulate the plugin logic
 namespace {
 
-class FlutterDocScannerPluginCApi : public flutter::Plugin {
+class FlutterDocScannerPlugin : public flutter::Plugin {
  public:
   static void RegisterWithRegistrar(flutter::PluginRegistrarWindows* registrar) {
     auto channel = std::make_unique<flutter::MethodChannel<flutter::EncodableValue>>(
         registrar->messenger(), "flutter_doc_scanner",
         &flutter::StandardMethodCodec::GetInstance());
 
-    auto plugin = std::make_unique<FlutterDocScannerPluginCApi>();
+    auto plugin = std::make_unique<FlutterDocScannerPlugin>();
 
     // Register method call handlers for the plugin
     channel->SetMethodCallHandler(
