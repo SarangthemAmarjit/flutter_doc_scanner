@@ -7,13 +7,19 @@
 
 #include <memory>
 
+#ifdef FLUTTER_PLUGIN_IMPL
+#define FLUTTER_PLUGIN_EXPORT __declspec(dllexport)
+#else
+#define FLUTTER_PLUGIN_EXPORT __declspec(dllimport)
+#endif
+
 namespace flutter_doc_scanner {
 
 /**
  * The FlutterDocScannerPlugin class provides a plugin implementation
  * for communication between Dart and native Windows code.
  */
-class FlutterDocScannerPlugin : public flutter::Plugin {
+class FLUTTER_PLUGIN_EXPORT FlutterDocScannerPlugin : public flutter::Plugin {
  public:
   /**
    * Registers the plugin with the provided Windows plugin registrar.
