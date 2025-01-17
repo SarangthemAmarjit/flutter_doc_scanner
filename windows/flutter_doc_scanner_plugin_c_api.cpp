@@ -10,7 +10,7 @@
 #include "flutter_doc_scanner_plugin.h"
 
 // Namespace to encapsulate the plugin logic
-namespace {
+namespace flutter_doc_scanner{
 
 class FlutterDocScannerPlugin : public flutter::Plugin {
  public:
@@ -49,16 +49,16 @@ class FlutterDocScannerPlugin : public flutter::Plugin {
     return "10.0";
   }
 };
-
-}  // namespace
-
-
-
 void FlutterDocScannerPluginRegisterWithRegistrar(
     FlutterDesktopPluginRegistrarRef registrar) {
   flutter_doc_scanner::FlutterDocScannerPlugin::RegisterWithRegistrar(
       flutter::PluginRegistrarManager::GetInstance()
           ->GetRegistrar<flutter::PluginRegistrarWindows>(registrar));
 }
+}  // namespace
+
+
+
+
 
 
