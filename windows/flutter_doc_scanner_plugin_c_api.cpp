@@ -5,6 +5,7 @@
 #include <flutter/standard_method_codec.h>
 #include <memory>
 #include <string>
+#include <sstream>  // Include the necessary header for std::ostringstream
 
 #include "flutter_doc_scanner_plugin.h"
 
@@ -34,7 +35,7 @@ class FlutterDocScannerPluginCApi : public flutter::Plugin {
                         std::unique_ptr<flutter::MethodResult<flutter::EncodableValue>> result) {
     if (call.method_name().compare("getPlatformVersion") == 0) {
       std::ostringstream version_stream;
-      version_stream << "Windows " << GetWindowsVersion();
+      version_stream << "Windows " << GetWindowsVersion();  // Concatenates the platform version
       result->Success(flutter::EncodableValue(version_stream.str()));
     } else {
       result->NotImplemented();
@@ -57,4 +58,3 @@ void FlutterDocScannerPluginCApiRegisterWithRegistrar(
       flutter::PluginRegistrarManager::GetInstance()
           ->GetRegistrar<flutter::PluginRegistrarWindows>(registrar));
 }
-
