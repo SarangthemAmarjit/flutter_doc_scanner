@@ -9,11 +9,11 @@
 
 #include "flutter_doc_scanner_plugin.h"
 
-// Namespace to encapsulate the plugin logic
-namespace flutter_doc_scanner{
+
+namespace flutter_doc_scanner {
 
 class FlutterDocScannerPlugin : public flutter::Plugin {
- public:
+public:
   static void RegisterWithRegistrar(flutter::PluginRegistrarWindows* registrar) {
     auto channel = std::make_unique<flutter::MethodChannel<flutter::EncodableValue>>(
         registrar->messenger(), "flutter_doc_scanner",
@@ -21,7 +21,6 @@ class FlutterDocScannerPlugin : public flutter::Plugin {
 
     auto plugin = std::make_unique<FlutterDocScannerPlugin>();
 
-    // Register method call handlers for the plugin
     channel->SetMethodCallHandler(
         [plugin_pointer = plugin.get()](const auto& call, auto result) {
           plugin_pointer->HandleMethodCall(call, std::move(result));
@@ -30,35 +29,28 @@ class FlutterDocScannerPlugin : public flutter::Plugin {
     registrar->AddPlugin(std::move(plugin));
   }
 
-  // Method to handle method calls from Flutter
   void HandleMethodCall(const flutter::MethodCall<flutter::EncodableValue>& call,
                         std::unique_ptr<flutter::MethodResult<flutter::EncodableValue>> result) {
     if (call.method_name().compare("getPlatformVersion") == 0) {
       std::ostringstream version_stream;
-      version_stream << "Windows " << GetWindowsVersion();  // Concatenates the platform version
+      version_stream << "Windows " << GetWindowsVersion();
       result->Success(flutter::EncodableValue(version_stream.str()));
     } else {
       result->NotImplemented();
     }
   }
 
- private:
-  // Example utility method to get the Windows version
+private:
   std::string GetWindowsVersion() {
-    // This is a simple placeholder; replace it with actual logic for fetching the OS version.
     return "10.0";
   }
 };
+
+}  // namespace flutter_doc_scanner
+
 void FlutterDocScannerPluginRegisterWithRegistrar(
     FlutterDesktopPluginRegistrarRef registrar) {
   flutter_doc_scanner::FlutterDocScannerPlugin::RegisterWithRegistrar(
       flutter::PluginRegistrarManager::GetInstance()
           ->GetRegistrar<flutter::PluginRegistrarWindows>(registrar));
 }
-}  // namespace
-
-
-
-
-
-
