@@ -22,8 +22,7 @@ list(APPEND PLUGIN_SOURCES
   "flutter_doc_scanner_plugin.h"
   "flutter_doc_scanner_plugin_c_api.cpp"  # Add this explicitly
 )
-# Add the flutter_doc_scanner plugin
-add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/../flutter/plugins/flutter_doc_scanner/windows" flutter_doc_scanner_build)
+
 
 # Alias the correct header file as the default plugin header file
 configure_file(
