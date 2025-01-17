@@ -20,16 +20,6 @@ set(PLUGIN_NAME "flutter_doc_scanner_plugin")
 list(APPEND PLUGIN_SOURCES
   "flutter_doc_scanner_plugin.cpp"
   "flutter_doc_scanner_plugin.h"
-  "flutter_doc_scanner_plugin_c_api.cpp"  # Add this explicitly
-)
-
-
-
-# Alias the correct header file as the default plugin header file
-configure_file(
-  "${CMAKE_CURRENT_SOURCE_DIR}/include/flutter_doc_scanner/flutter_doc_scanner_plugin_c_api.h"
-  "${CMAKE_CURRENT_SOURCE_DIR}/include/flutter_doc_scanner/flutter_doc_scanner_plugin.h"
-  COPYONLY
 )
 
 # Define the plugin library target. Its name must not be changed (see comment
